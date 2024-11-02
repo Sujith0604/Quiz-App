@@ -1,0 +1,9 @@
+.correct {
+  background-color: aqua;
+  border-color: green;
+}
+
+.wrong {
+  background-color: orangered;
+  border-color: red;
+}
