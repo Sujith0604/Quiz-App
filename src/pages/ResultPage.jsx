@@ -1,17 +1,18 @@
-import ProgressBar from "@ramonak/react-progress-bar";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const ResultPage = ({ score, reset, index }) => {
   return (
     <div className=" flex flex-col h-screen items-center justify-center gap-5">
       <div className=" flex flex-col justify-center gap-10 items-center h-[400px] w-[400px] border rounded-full">
         <h1 className=" text-3xl font-bold">SCORE</h1>
-        <div className="w-[200px] md:w-[200px]">
-          <ProgressBar
-            bgColor="#00ff00"
-            completed={score * 20}
-            maxCompleted={100}
-            height="50px"
-          />
+
+        <div style={{ width: 200, height: 200 }}>
+          <CircularProgressbar
+            value={score * 20}
+            maxValue={100}
+            text={`${score * 20}%`}
+          />{" "}
         </div>
       </div>
       <div className=" flex flex-col gap-10">

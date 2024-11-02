@@ -1,10 +1,11 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { data } from "../assets/data";
 import ResultPage from "../pages/ResultPage";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "../App.css";
-import ProgressBar from "@ramonak/react-progress-bar";
 import { useNavigate } from "react-router-dom";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const QuestionAndAnswer = () => {
   let [index, setIndex] = useState(0);
@@ -59,14 +60,13 @@ const QuestionAndAnswer = () => {
         className=" md:hidden w-full bg-cover"
         src="/images/celebration.jpg"
       />
-      <div className=" flex flex-col w-[100%] items-center justify-between gap-5 md:w-[80%] border rounded-3xl h-[80%] p-4 ">
-        <div className=" w-[200px] ">
-          <ProgressBar
-            completed={index * 20}
-            maxCompleted={100}
-            bgColor="#00ff00"
-            height="50px"
-          />
+      <div className=" flex flex-col w-[100%] items-center justify-between gap-5 md:w-[80%] border rounded-3xl  p-4 ">
+        <div style={{ width: 200, height: 200 }}>
+          <CircularProgressbar
+            value={index * 20}
+            maxValue={100}
+            text={`${index + 1}/${data.length}`}
+          />{" "}
         </div>
 
         <div className=" flex flex-col gap-10">
