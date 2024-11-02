@@ -14,6 +14,16 @@ const ResultPage = ({ score, reset, index }) => {
           />
         </div>
       </div>
+      <div className=" flex flex-col gap-10">
+        <div className=" text-xl p-4 bg-green-200 w-[400px] flex items-center justify-center gap-5 rounded-2xl">
+          <div className=" h-[25px] w-[25px] rounded-full bg-green-700"></div>
+          <span>{score} Correct</span>{" "}
+        </div>
+        <div className=" text-xl p-4 bg-red-200 w-[400px] flex items-center justify-center gap-5 rounded-2xl">
+          <div className=" h-[25px] w-[25px] rounded-full bg-red-700"></div>
+          {index + 1 - score} wrong
+        </div>
+      </div>
 
       <div>
         <button

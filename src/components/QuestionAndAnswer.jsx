@@ -7,47 +7,36 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { useNavigate } from "react-router-dom";
 
 const QuestionAndAnswer = () => {
-  const [index, setIndex] = useState(0);
-  const [questions, setQuestions] = useState(data[index]);
-  const [score, setScore] = useState(0);
-  const [resultPage, setResultPage] = useState(false);
-  const [lock, setLock] = useState(false);
-  const navigate = useNavigate();
+  let [index, setIndex] = useState(0);
+  let [questions, setQuestions] = useState(data[index]);
+  let [score, setScore] = useState(0);
+  let [resultPage, setResultPage] = useState(false);
+  let [lock, setLock] = useState(false);
+  const [clickedOption, setClickedOption] = useState(0);
+  let navigate = useNavigate();
 
-  let optionRef = useRef(null);
-
-  const nextQuestion = (e) => {
+  const nextQuestion = () => {
     if (lock) {
+      setClickedOption(0);
       if (index === data.length - 1) {
         setResultPage(true);
-        optionRef.current.classList.remove("correct");
-        optionRef.current.classList.remove("wrong");
-        e.target.classList.remove("correct");
-        e.target.classList.remove("wrong");
       } else if (index < data.length - 1) {
-        setIndex((prev) => prev + 1);
+        setIndex(++index);
         setQuestions(data[index]);
         setLock(false);
-        e.target.classList.remove("correct");
-        e.target.classList.remove("wrong");
-        optionRef.current.classList.remove("correct");
-        optionRef.current.classList.remove("wrong");
       }
     }
   };
 
   ///correct or not
-  const handleClick = (e, isCorrect) => {
+  const handleClick = (i, isCorrect) => {
     if (lock === false) {
+      setClickedOption(i + 1);
       if (isCorrect) {
-        e.target.classList.add("correct");
         setLock(true);
         setScore((prev) => prev + 1);
       } else {
-        //add css
-        e.target.classList.add("wrong");
         setLock(true);
-        optionRef.current.classList.add("correct");
       }
     }
   };
@@ -89,10 +78,11 @@ const QuestionAndAnswer = () => {
           {questions?.answerOption.map((answer, i) => {
             return (
               <button
-                ref={optionRef}
-                onClick={(e) => handleClick(e, answer.isCorrect)}
+                onClick={() => handleClick(i, answer.isCorrect)}
                 key={i}
-                className={`p-4 border w-[300px] gap-5  rounded-2xl`}
+                className={`p-4 border w-[300px] gap-5  rounded-2xl ${
+                  clickedOption == i + 1 ? " bg-green-200" : null
+                }`}
               >
                 {answer.answerText}
               </button>
