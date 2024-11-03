@@ -8,7 +8,7 @@ The quiz score is displayed at the end with a percentage.
 
 ## Demo
 
-https://quiz-app-one-indol-67.vercel.app/quiz
+https://quiz-app-one-indol-67.vercel.app/
 
 
 ## Tech Stack
