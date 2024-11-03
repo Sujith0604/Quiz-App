@@ -40,6 +40,8 @@ Go to terminal -> New terminal (If you are using VS code).
         3) The final score will be displayed with percentage.
 
         4) The final result with total correct and wrong answers can be tracked.
+
+        5) This also has a reset feature at the end.
 ## Author
 
 - [Github](https://github.com/Sujith0604)
